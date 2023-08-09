@@ -31,7 +31,7 @@ jobs:
 
     - name: Deploy to EC2
       env:
-        EC2_INSTANCE_IP: ${{ secrets.EC2_INSTANCE_IP }}
+        EC2_INSTANCE_IP: 54.235.7.161
         EC2_SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
       run: |
         echo "$EC2_SSH_PRIVATE_KEY" > key.pem
