@@ -29,6 +29,11 @@ jobs:
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+    - name: Add EC2 host key to known hosts
+      run: |
+          mkdir -p ~/.ssh
+          echo "$EC2_INSTANCE_IP $(ssh-keyscan -t rsa $EC2_INSTANCE_IP 2>&1)" >> ~/.ssh/known_hosts
+          
     - name: Deploy to EC2
       env:
         EC2_INSTANCE_IP: 54.235.7.161
